@@ -1,5 +1,8 @@
 package com.example.demo.repository;
 
-public class UserRepository {
-    
+import com.example.demo.model.User;
+
+import org.springframework.data.repository.PagingAndSortingRepository;
+public interface UserRepository extends PagingAndSortingRepository<User, String>  {
+
 }
