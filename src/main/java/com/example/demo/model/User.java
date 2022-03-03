@@ -10,6 +10,17 @@ public class User {
     @Column(name = "uuid")
     private String uuid;
 
+    @Column(name = "username")
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    private String username;
+
     public int getId() {
         return this.id;
     }
