@@ -7,10 +7,44 @@ public class User {
     @Id
 	private int id;
 
-    @Column(name = "uuid")
+    @Column(name = "id_ref")
     private String uuid;
 
     @Column(name = "username")
+    private String username;
+
+    @Column(name = "firstname")
+    private String firtname;
+
+    @Column(name = "lastname")
+    private String lastname;
+
+    @Column(name = "status")
+    private int status;
+
+    public String getFirtname() {
+        return this.firtname;
+    }
+
+    public void setFirtname(String firtname) {
+        this.firtname = firtname;
+    }
+
+    public String getLastname() {
+        return this.lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public int getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public String getUsername() {
         return this.username;
@@ -19,7 +53,6 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-    private String username;
 
     public int getId() {
         return this.id;

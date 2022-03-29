@@ -1,20 +1,23 @@
 package com.example.demo.controllers;
 
 import java.util.*;
-import org.springframework.http.*;
-import org.springframework.web.bind.annotation.*;
+
 import com.example.demo.helper.ResponseHelper;
-import com.example.demo.model.User;
-import com.example.demo.service.UserService;
+import com.example.demo.model.Product;
+import com.example.demo.service.ProductService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/users")
-public class UserController {
-
+@RequestMapping("/api/products")
+public class ProductController {
+    
     @Autowired
-    UserService userService;
+    ProductService productService;
 
     @GetMapping(value="")
     public ResponseEntity<Object> getAllUser(
@@ -22,24 +25,25 @@ public class UserController {
         @RequestParam(defaultValue = "10") Integer pageSize,
         @RequestParam(defaultValue = "id") String sortBy
     ) {
-        List<User> users = new ArrayList<User>();
+        List<Product> users = new ArrayList<Product>();
+
         try {
-            users = userService.getAllUser(pageIndex, pageSize, sortBy.trim());
+            users = productService.getAll(pageIndex, pageSize, sortBy.trim());
             return ResponseHelper.getResponse("Success", HttpStatus.OK, users);
         } catch (Exception ex) {
-            return ResponseHelper.getResponse("Internal Server Error", HttpStatus.OK, null);
+            return ResponseHelper.getResponse(ex.getMessage(), HttpStatus.OK, null);
         }
     }
 
     @GetMapping(value="/{id}")
     public ResponseEntity<Object> getProductById(@PathVariable("id") Integer id) {
         try {
-            User user = userService.getUserById(id);
-            return ResponseHelper.getResponse("Success", HttpStatus.OK, user);
+            Product product = productService.getProductById(id);
+            return ResponseHelper.getResponse("Success", HttpStatus.OK, product);
         } catch (Exception ex) {
-            return ResponseHelper.getResponse("Internal Server Error", HttpStatus.OK, null);
+            return ResponseHelper.getResponse(ex.getMessage(), HttpStatus.OK, null);
         }
     }
 
-
 }
+

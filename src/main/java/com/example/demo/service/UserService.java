@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 
@@ -19,8 +17,7 @@ public class UserService {
     @Autowired
     UserRepository repository;
     
-    public List<User> getAllUser(Integer pageIndex, Integer pageSize, String sortBy)
-    {
+    public List<User> getAllUser(Integer pageIndex, Integer pageSize, String sortBy) {
         Pageable paging = PageRequest.of(pageIndex, pageSize, Sort.by(sortBy));
 
         Page<User> pagedResult = repository.findAll(paging);
@@ -30,6 +27,11 @@ public class UserService {
         } else {
             return new ArrayList<User>();
         }
+    }
+
+    public User getUserById(Integer id) {
+        Optional<User> user = repository.findById(id);
+        return user.get();
     }
 
 }
