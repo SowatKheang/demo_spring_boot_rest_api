@@ -3,7 +3,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "categories")
-public class Category {
+public class Category extends BaseModel {
 
     @Id
 	private Integer id;
