@@ -26,7 +26,7 @@ public class CategoryController {
     ) {
         List<Category> categories = new ArrayList<Category>();
         try {
-            categories = categoryService.getAll(pageIndex, pageSize, sortBy.trim());
+            categories = categoryService.getList(pageIndex, pageSize, sortBy.trim(), Category.class);
             return ResponseHelper.getResponse("Success", HttpStatus.OK, categories);
         } catch (Exception ex) {
             return ResponseHelper.getResponse(ex.getMessage(), HttpStatus.OK, null);

@@ -25,11 +25,11 @@ public class ProductController {
         @RequestParam(defaultValue = "10") Integer pageSize,
         @RequestParam(defaultValue = "id") String sortBy
     ) {
-        List<Product> users = new ArrayList<Product>();
+        List<Product> products = new ArrayList<Product>();
 
         try {
-            users = productService.getAll(pageIndex, pageSize, sortBy.trim());
-            return ResponseHelper.getResponse("Success", HttpStatus.OK, users);
+            products = productService.getList(pageIndex, pageSize, sortBy.trim(), Product.class);
+            return ResponseHelper.getResponse("Success", HttpStatus.OK, products);
         } catch (Exception ex) {
             return ResponseHelper.getResponse(ex.getMessage(), HttpStatus.OK, null);
         }
@@ -38,7 +38,7 @@ public class ProductController {
     @GetMapping(value="/{id}")
     public ResponseEntity<Object> getProductById(@PathVariable("id") Integer id) {
         try {
-            Product product = productService.getProductById(id);
+            Product product = productService.getById(id, Product.class);
             return ResponseHelper.getResponse("Success", HttpStatus.OK, product);
         } catch (Exception ex) {
             return ResponseHelper.getResponse(ex.getMessage(), HttpStatus.OK, null);
