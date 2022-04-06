@@ -29,7 +29,7 @@ public abstract class AbstractController<T extends AbstractService<?, E>, E exte
         @RequestParam(defaultValue = "10") Integer pageSize,
         @RequestParam(defaultValue = "id") String sortBy
     ) {
-        List<?> list = new ArrayList<E>();
+        List<E> list = new ArrayList<E>();
 
         try {
             list = this.service.getList(pageIndex, pageSize, sortBy.trim());
