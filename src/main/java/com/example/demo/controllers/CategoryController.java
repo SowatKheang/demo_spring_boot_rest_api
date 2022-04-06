@@ -8,9 +8,5 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/categories")
 public class CategoryController extends AbstractController<CategoryService, Category> {
-
-    CategoryController() {
-        super(Category.class);
-    }
-
+    
 }

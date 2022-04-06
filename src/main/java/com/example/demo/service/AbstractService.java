@@ -14,25 +14,31 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @BaseModel
  * @ConverterHelper
  */
-public abstract class AbstractService<T extends IRepository<?>> {
+public abstract class AbstractService<T extends IRepository<?>, E extends BaseModel> {
 
     @Autowired
     T repository;
+
+    Class<E> clazz;
+
+    AbstractService(Class<E> clazz) {
+        this.clazz = clazz;
+    }
     
-    public <E extends BaseModel> List<E> getList(Integer pageIndex, Integer pageSize, String sortBy, Class<E> clazz) {
+    public List<E> getList(Integer pageIndex, Integer pageSize, String sortBy) {
         Pageable paging = PageRequest.of(pageIndex, pageSize, Sort.by(sortBy));
         Page<?> pagedResult = this.repository.findAll(paging);
         
         if (pagedResult.hasContent()) {
-            return ConverterHelper.castList(pagedResult.getContent(), clazz);
+            return ConverterHelper.castList(pagedResult.getContent(), this.clazz);
         } else {
             return null;
         }
     }
 
-    public <E extends BaseModel> E getById(Integer id, Class<E> clazz) {
+    public E getById(Integer id) {
         Optional<?> model = this.repository.findById(id);
-        return ConverterHelper.castObject(model.get(), clazz);
+        return ConverterHelper.castObject(model.get(), this.clazz);
     }
 
     // TODO: add more

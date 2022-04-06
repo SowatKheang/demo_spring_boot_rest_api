@@ -7,6 +7,13 @@ import org.springframework.http.ResponseEntity;
 
 public class ResponseHelper {
 
+    /**
+     * 
+     * @param message
+     * @param status
+     * @param responseObj
+     * @return
+     */
     public static ResponseEntity<Object> getResponse(String message, HttpStatus status, Object responseObj) {
         Map<String, Object> map = new HashMap<String, Object>();
 

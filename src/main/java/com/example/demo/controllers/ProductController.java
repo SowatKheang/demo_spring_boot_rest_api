@@ -9,8 +9,5 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/products")
 public class ProductController extends AbstractController<ProductService, Product> {
 
-    ProductController() {
-        super(Product.class);
-    }
 }
 

@@ -9,8 +9,4 @@ import com.example.demo.service.UserService;
 @RequestMapping("/api/users")
 public class UserController extends AbstractController<UserService, User> {
 
-    UserController() {
-        super(User.class);
-    }
-
 }
