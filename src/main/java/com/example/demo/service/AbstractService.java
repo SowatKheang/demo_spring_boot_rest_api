@@ -23,6 +23,7 @@ public abstract class AbstractService<T extends IRepository<?>> {
             return null;
         }
     }
+
     public <E extends BaseModel> E getById(Integer id, Class<E> clazz) {
         Optional<?> model = this.repository.findById(id);
         if (model != null) {
@@ -30,5 +31,7 @@ public abstract class AbstractService<T extends IRepository<?>> {
         }
         return null;
     }
+
+    // TODO: add more
 
 }
