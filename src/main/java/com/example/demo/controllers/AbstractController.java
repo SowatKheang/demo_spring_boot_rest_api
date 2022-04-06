@@ -38,7 +38,7 @@ public abstract class AbstractController<T extends AbstractService<?>, E extends
         List<?> list = new ArrayList<E>();
 
         try {
-            list = service.getList(pageIndex, pageSize, sortBy.trim(), this.clazz);
+            list = this.service.getList(pageIndex, pageSize, sortBy.trim(), this.clazz);
             return ResponseHelper.getResponse("Success", HttpStatus.OK, list);
         } catch (Exception ex) {
             return ResponseHelper.getResponse(ex.getMessage(), HttpStatus.OK, null);
@@ -48,7 +48,7 @@ public abstract class AbstractController<T extends AbstractService<?>, E extends
     @GetMapping(value="/{id}")
     public ResponseEntity<Object> getById(@PathVariable("id") Integer id) {
         try {
-            E model = service.getById(id, this.clazz);
+            E model = this.service.getById(id, this.clazz);
             return ResponseHelper.getResponse("Success", HttpStatus.OK, model);
         } catch (Exception ex) {
             return ResponseHelper.getResponse(ex.getMessage(), HttpStatus.OK, null);
