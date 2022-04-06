@@ -26,10 +26,7 @@ public abstract class AbstractService<T extends IRepository<?>> {
 
     public <E extends BaseModel> E getById(Integer id, Class<E> clazz) {
         Optional<?> model = this.repository.findById(id);
-        if (model != null) {
-            return ConverterHelper.castObject(model.get(), clazz);
-        }
-        return null;
+        return ConverterHelper.castObject(model.get(), clazz);
     }
 
     // TODO: add more
