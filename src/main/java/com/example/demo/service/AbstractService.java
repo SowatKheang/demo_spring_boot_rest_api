@@ -8,6 +8,12 @@ import com.example.demo.model.BaseModel;
 import com.example.demo.repository.IRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * @AbstractService
+ * @IRepository
+ * @BaseModel
+ * @ConverterHelper
+ */
 public abstract class AbstractService<T extends IRepository<?>> {
 
     @Autowired

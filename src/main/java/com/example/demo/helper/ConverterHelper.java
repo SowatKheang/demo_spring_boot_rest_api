@@ -2,6 +2,9 @@ package com.example.demo.helper;
 
 import java.util.*;
 
+/**
+ * @ConverterHelper
+ */
 public class ConverterHelper<T> {
     
     public static <T> List<T> castList(Object obj, Class<T> clazz) {

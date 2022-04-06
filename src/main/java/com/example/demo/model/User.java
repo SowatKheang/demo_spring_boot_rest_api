@@ -2,7 +2,7 @@ package com.example.demo.model;
 import javax.persistence.*;
 @Entity
 @Table(name = "users")
-public class User {
+public class User extends BaseModel {
     
     @Id
 	private int id;
