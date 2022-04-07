@@ -75,6 +75,15 @@ public abstract class AbstractService<T extends IRepository<E>, E extends BaseMo
         return updateData.get();
     }
 
+    /**
+     * 
+     * @param model
+     * @return
+     */
+    public E save(E model) {
+        return this.repository.save(model);
+    }
+
     // TODO: add more
 
 }
