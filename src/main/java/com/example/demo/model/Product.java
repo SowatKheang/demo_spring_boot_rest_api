@@ -3,7 +3,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "products")
-public class Product extends BaseModel {
+public class Product extends BaseModel<Product> {
 
     @Id
 	private Integer id;
@@ -114,6 +114,22 @@ public class Product extends BaseModel {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public Product updateWith(Product model) {
+        Product updatedProduct = new Product();
+        updatedProduct.setId(this.id);
+        updatedProduct.setUuid(this.uuid);
+        updatedProduct.setCategoryId(model.categoryId);
+        updatedProduct.setInventoryId(model.inventoryId);
+        updatedProduct.setDescription(model.description);
+        updatedProduct.setDescriptionEn(model.descriptionEn);
+        updatedProduct.setPrice(model.price);
+        updatedProduct.setDiscountId(model.discountId);
+        updatedProduct.setStatus(model.status);
+
+        return updatedProduct;
     }
 
 }

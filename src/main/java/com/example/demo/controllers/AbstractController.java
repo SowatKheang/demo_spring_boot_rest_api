@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @BaseModel
  * @ResponseHelper
  */
-public abstract class AbstractController<T extends AbstractService<?, E>, E extends BaseModel> {
+public abstract class AbstractController<T extends AbstractService<?, E>, E extends BaseModel<E>> {
 
     @Autowired
     T service;

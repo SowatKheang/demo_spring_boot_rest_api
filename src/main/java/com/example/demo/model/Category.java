@@ -3,7 +3,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "categories")
-public class Category extends BaseModel {
+public class Category extends BaseModel<Category> {
 
     @Id
 	private Integer id;
@@ -72,6 +72,17 @@ public class Category extends BaseModel {
         this.status = status;
     }
 
+    @Override
+    public Category updateWith(Category model) {
+        Category updatedCategory = new Category();
+        updatedCategory.setId(this.id);
+        updatedCategory.setUuid(this.uuid);
+        updatedCategory.setDescription(model.description);
+        updatedCategory.setDescriptionEn(model.descriptionEn);
+        updatedCategory.setPhoto(model.photo);
+        updatedCategory.setStatus(model.status);
 
-    
+        return updatedCategory;
+    }
+
 }

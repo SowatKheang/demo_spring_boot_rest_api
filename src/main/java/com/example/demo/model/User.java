@@ -2,7 +2,7 @@ package com.example.demo.model;
 import javax.persistence.*;
 @Entity
 @Table(name = "users")
-public class User extends BaseModel {
+public class User extends BaseModel<User> {
     
     @Id
 	private int id;
@@ -74,5 +74,11 @@ public class User extends BaseModel {
 	public String toString() {
 		return "User [id=" + id + ", uuid=" + uuid + "]";
 	}
+
+    @Override
+    public User updateWith(User model) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

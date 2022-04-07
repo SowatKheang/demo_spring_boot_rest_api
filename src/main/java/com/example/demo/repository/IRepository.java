@@ -11,7 +11,7 @@ import org.springframework.data.domain.Sort;
 
 
 @NoRepositoryBean
-public interface IRepository<T extends BaseModel> extends CrudRepository<T, Integer> {
+public interface IRepository<T extends BaseModel<?>> extends CrudRepository<T, Integer> {
 
     /**
 	 * Returns all entities sorted by the given options.

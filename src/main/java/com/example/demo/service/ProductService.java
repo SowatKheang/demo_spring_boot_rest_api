@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductService extends AbstractService<ProductRespository, Product> {
 
-    ProductService() {
-        super(Product.class);
-    }
-    
+    // ProductService() {
+    //     super(Product.class);
+    // }
+
 }
