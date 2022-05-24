@@ -35,6 +35,17 @@ public class Product extends BaseModel<Product> {
     @Column(name = "price")
     private double price;
 
+    @OneToOne
+    @JoinColumn(name = "category_id", insertable = false, updatable = false)
+    private Category category;
+
+    public Category getCategory() {
+        return this.category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public Integer getId() {
         return this.id;
