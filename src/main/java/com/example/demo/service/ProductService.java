@@ -11,4 +11,8 @@ public class ProductService extends AbstractService<ProductRespository, Product>
     //     super(Product.class);
     // }
 
+    // public ResponseEntity<List<Product>> getData() {
+	// 	return new ResponseEntity<List<Product>>(this.repository.findAll(), HttpStatus.OK);
+	// }
+
 }
