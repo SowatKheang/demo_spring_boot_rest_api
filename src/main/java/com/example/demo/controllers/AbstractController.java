@@ -46,12 +46,10 @@ public abstract class AbstractController<T extends AbstractService<?, E>, E exte
 
         try {
             list = this.service.getList(pageIndex, pageSize, sortBy.trim());
-            // String jsonStr = JSONArray.toJSONString(list);
-            // log.info(jsonStr);
-            return ResponseHelper.getResponse("Success", HttpStatus.OK, list);
+            return ResponseHelper.getResponseSuccess(list, null);
         } catch (Exception ex) {
             log.info(ex.getMessage());
-            return ResponseHelper.getResponse("Internal Server Error", HttpStatus.OK, null);
+            return ResponseHelper.getResponse(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), HttpStatus.OK, null);
         }
     }
 
@@ -64,7 +62,8 @@ public abstract class AbstractController<T extends AbstractService<?, E>, E exte
     public ResponseEntity<Object> getById(@PathVariable("id") Integer id) {
         try {
             E model = this.service.getById(id);
-            return ResponseHelper.getResponse("Success", HttpStatus.OK, model);
+            // return ResponseHelper.getResponse("Success", HttpStatus.OK, model);
+            return ResponseHelper.getResponseSuccess(model, null);
         } catch (Exception ex) {
             log.info(ex.getMessage());
             return ResponseHelper.getResponse("Internal Server Error", HttpStatus.OK, null);
