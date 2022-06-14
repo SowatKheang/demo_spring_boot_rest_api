@@ -4,12 +4,14 @@ public class AuthResponse {
     
     private String email;
 	private String accessToken;
+	private Integer statusCode;
 
 	public AuthResponse() { }
 	
-	public AuthResponse(String email, String accessToken) {
+	public AuthResponse(String email, String accessToken, Integer statusCode) {
 		this.email = email;
 		this.accessToken = accessToken;
+		this.statusCode = statusCode;
 	}
 
 	public String getEmail() {
@@ -26,5 +28,13 @@ public class AuthResponse {
 
 	public void setAccessToken(String accessToken) {
 		this.accessToken = accessToken;
+	}
+
+	public Integer getStatusCode() {
+		return statusCode;
+	}
+
+	public void setStatusCode(Integer statusCode) {
+		this.statusCode = statusCode;
 	}
 }

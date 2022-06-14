@@ -41,12 +41,14 @@ public class AuthController {
 			
 			User user = (User) authentication.getPrincipal();
 			String accessToken = jwtUtil.generateAccessToken(user);
-			AuthResponse response = new AuthResponse(user.getEmail(), accessToken);
+			AuthResponse response = new AuthResponse(user.getEmail(), accessToken, 200);
 			
 			return ResponseEntity.ok().body(response);
 			
 		} catch (BadCredentialsException ex) {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+			AuthResponse response = new AuthResponse(null, null, 422);
+			return ResponseEntity.ok().body(response);
+			// return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}
 	}
     
