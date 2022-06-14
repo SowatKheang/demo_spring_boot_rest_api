@@ -1,25 +1,27 @@
 package com.example.demo.config.auth_models;
 
-public class AuthResponse {
+import com.example.demo.model.BaseModel;
+
+public class AuthResponse<T extends BaseModel<T>> {
     
-    private String email;
+    private T data;
 	private String accessToken;
 	private Integer statusCode;
 
 	public AuthResponse() { }
 	
-	public AuthResponse(String email, String accessToken, Integer statusCode) {
-		this.email = email;
+	public AuthResponse(T data, String accessToken, Integer statusCode) {
+		this.data = data;
 		this.accessToken = accessToken;
 		this.statusCode = statusCode;
 	}
 
-	public String getEmail() {
-		return email;
+	public T getData() {
+		return data;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setData(T data) {
+		this.data = data;
 	}
 
 	public String getAccessToken() {

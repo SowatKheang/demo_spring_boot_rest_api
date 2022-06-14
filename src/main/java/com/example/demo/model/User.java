@@ -5,6 +5,8 @@ import javax.persistence.*;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "users")
 public class User extends BaseModel<User> implements UserDetails {
@@ -65,7 +67,7 @@ public class User extends BaseModel<User> implements UserDetails {
     }
 
     public String getUsername() {
-        return this.email;
+        return this.username;
     }
 
     public int getId() {
@@ -99,6 +101,7 @@ public class User extends BaseModel<User> implements UserDetails {
         return null;
     }
 
+    @JsonIgnore
     @Override
     public String getPassword() {
         return password;
