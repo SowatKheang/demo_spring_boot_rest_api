@@ -8,7 +8,6 @@ import com.example.demo.model.User;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -42,10 +41,7 @@ public class AuthController {
 			
 			User user = (User) authentication.getPrincipal();
 			String accessToken = jwtUtil.generateAccessToken(user);
-			response = new AuthResponse<User>();
-			response.setData(user);
-			response.setAccessToken(accessToken);
-			response.setStatusCode(200);
+			response = new AuthResponse<User>(user, accessToken, 200);
 			
 		} catch (BadCredentialsException ex) {
 			response = new AuthResponse<User>(null, null, 422);
