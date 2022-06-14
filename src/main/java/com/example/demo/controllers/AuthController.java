@@ -33,6 +33,7 @@ public class AuthController {
 
     @PostMapping("/auth")
 	public ResponseEntity<?> login(@RequestBody @Valid AuthRequest request) {
+		AuthResponse<User> response;
 		try {
 			Authentication authentication = authManager.authenticate(
 					new UsernamePasswordAuthenticationToken(
@@ -41,17 +42,15 @@ public class AuthController {
 			
 			User user = (User) authentication.getPrincipal();
 			String accessToken = jwtUtil.generateAccessToken(user);
-			AuthResponse<User> response = new AuthResponse<User>();
+			response = new AuthResponse<User>();
 			response.setData(user);
 			response.setAccessToken(accessToken);
 			response.setStatusCode(200);
 			
-			return ResponseEntity.ok().body(response);
-			
 		} catch (BadCredentialsException ex) {
-			AuthResponse<User> response = new AuthResponse<User>(null, null, 422);
-			return ResponseEntity.ok().body(response);
+			response = new AuthResponse<User>(null, null, 422);
 		}
+		return ResponseEntity.ok().body(response);
 	}
     
 }
